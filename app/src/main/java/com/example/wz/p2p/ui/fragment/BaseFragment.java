@@ -21,7 +21,7 @@ public abstract class BaseFragment extends Fragment {
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(setLayoutResID(),null);
+        View view = inflater.inflate(setLayoutResID(), null);
         mBind = ButterKnife.bind(this, view);
         return view;
     }
@@ -30,13 +30,16 @@ public abstract class BaseFragment extends Fragment {
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
+        initData();
     }
+
+    protected  void initData(){}
 
     protected abstract int setLayoutResID();
 
     @Override
     public void onDestroyView() {
-        if (mBind!=mBind.EMPTY){
+        if (mBind != mBind.EMPTY) {
             mBind.unbind();
         }
         super.onDestroyView();
